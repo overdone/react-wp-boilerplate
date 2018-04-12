@@ -5,15 +5,21 @@
 * PostCSS
 * lint
 
-## Install dependencies
+## 1. Clone this repo
+\# git clone 
+
+## 2. Install dependencies
 \# npm install
 
-## Run dev server
+## 3. Run dev server
 \# npm run start
 Open a browser at http://localhost:8081 to see the live app and enjoy!
+## OR
 
 ## Run production build
 \# npm run production
+
+## 4. Enjoy
 
 
 
