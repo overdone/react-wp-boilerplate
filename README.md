@@ -6,7 +6,7 @@
 * lint
 
 ## 1. Clone this repo
-\# git clone 
+\# git clone https://github.com/overdone/react-wp-boilerplate.git
 
 ## 2. Install dependencies
 \# npm install
