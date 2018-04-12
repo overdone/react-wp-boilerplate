@@ -18,6 +18,6 @@ describe('App Component', () => {
   });
   
   it('should have one heading', () => {
-    expect(wrapper.find('#heading').type()).toEqual('h2');
+    expect(wrapper.find('#ass').type()).toEqual('div');
   });
 });

@@ -19,7 +19,6 @@
     "setupFiles": [
       "<rootDir>/config/jest/shim.js"
     ],
-    "mapCoverage": true,
     "collectCoverageFrom": [
       "app/**/*.{js,jsx,ts,tsx}"
     ],
@@ -58,6 +57,7 @@
     "babel-preset-stage-2": "6.24.1",
     "copy-webpack-plugin": "4.3.0",
     "css-loader": "0.28.9",
+    "cross-env": "5.1.2",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "eslint": "4.13.0",
