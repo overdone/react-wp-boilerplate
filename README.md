@@ -1,4 +1,4 @@
-Simple React Boilerplate
+## Simple React Boilerplate
 * React
 * Webpack
 * Jest
