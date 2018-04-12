@@ -13,7 +13,7 @@
 
 ## 3. Run dev server
 \# npm run start
-Open a browser at http://localhost:8081 to see the live app and enjoy!
+Open a browser at http://localhost:8081 to see the live app
 
 ### OR
 
