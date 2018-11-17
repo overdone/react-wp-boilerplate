@@ -3,7 +3,6 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
   devtool: 'cheap-module-source-map',
@@ -28,16 +27,16 @@ const config = {
   devServer: {
     hot: true,
     contentBase: resolve(__dirname, 'build'),
-    publicPath: '/'
+    publicPath: '/',
   },
 
   module: {
     rules: [
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.(js|jsx)$/,
         exclude: [resolve(__dirname, 'node_modules'), resolve(__dirname, 'src/libs')],
-        loader: "eslint-loader"
+        loader: 'eslint-loader',
       },
       {
         test: /\.(js|jsx)$/,
@@ -57,25 +56,25 @@ const config = {
               options: {
                 importLoaders: 1,
                 modules: true,
-                localIdentName: "[path]__[name]__[local]___[hash:base64:5]"
-              }
+                localIdentName: '[path]__[name]__[local]___[hash:base64:5]',
+              },
             },
             {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                plugins: function() {
+                plugins: () => {
                   return [
                     require('postcss-flexbugs-fixes'),
                     require('postcss-import')(),
                     require('postcss-cssnext')(),
-                    require('postcss-nested')
+                    require('postcss-nested'),
                   ]
-                }
-              }
-            }
+                },
+              },
+            },
           ],
-          publicPath: '../'
+          publicPath: '../',
         }),
       },
       {
@@ -87,8 +86,8 @@ const config = {
               limit: 8192,
               mimetype: 'image/png',
               name: 'images/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -97,9 +96,9 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: 'fonts/[name].[ext]'
-            }
-          }
+              name: 'fonts/[name].[ext]',
+            },
+          },
         ],
       },
       {
@@ -111,8 +110,8 @@ const config = {
               limit: 8192,
               mimetype: 'application/font-woff',
               name: 'fonts/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -124,8 +123,8 @@ const config = {
               limit: 8192,
               mimetype: 'application/octet-stream',
               name: 'fonts/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -137,11 +136,11 @@ const config = {
               limit: 8192,
               mimetype: 'image/svg+xml',
               name: 'images/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
-    ]
+    ],
   },
 
   plugins: [
@@ -151,13 +150,9 @@ const config = {
         eslint: {
           configFile: resolve(__dirname, '.eslintrc'),
           cache: false,
-        }
+        },
       },
     }),
-    new CopyWebpackPlugin([{
-      from: `${__dirname}/build/assets`,
-      to: 'assets',
-    }]),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
     new OpenBrowserPlugin({ url: 'http://localhost:8081' }),

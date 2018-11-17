@@ -9,7 +9,7 @@ const config = (env) => ({
   entry: [
     'babel-polyfill',
     require.resolve('./polyfills'),
-    './main.js'
+    './main.js',
   ],
 
   context: resolve(__dirname, 'src/app'),
@@ -25,9 +25,6 @@ const config = (env) => ({
     new CopyWebpackPlugin([{
       from: `${__dirname}/build/index.html`,
       to: 'index.html',
-    },{
-      from: `${__dirname}/build/assets`,
-      to: 'assets',
     }]),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.LoaderOptionsPlugin({
@@ -36,13 +33,13 @@ const config = (env) => ({
     }),
     new webpack.optimize.UglifyJsPlugin({
       beautify: false,
-      sourceMap: true
+      sourceMap: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
         IS_SIGMA: env && JSON.stringify(env.sigma),
-      }
+      },
     }),
     new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
   ],
@@ -65,25 +62,25 @@ const config = (env) => ({
               options: {
                 importLoaders: 1,
                 modules: true,
-                localIdentName: "[path]__[name]__[local]___[hash:base64:5]"
-              }
+                localIdentName: '[path]__[name]__[local]___[hash:base64:5]',
+              },
             },
             {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                plugins: function() {
+                plugins: () => {
                   return [
                     require('postcss-flexbugs-fixes'),
                     require('postcss-import')(),
                     require('postcss-cssnext')(),
-                    require('postcss-nested')
+                    require('postcss-nested'),
                   ]
-                }
-              }
-            }
+                },
+              },
+            },
           ],
-          publicPath: '../'
+          publicPath: '../',
         }),
       },
       {
@@ -95,8 +92,8 @@ const config = (env) => ({
               limit: 8192,
               mimetype: 'image/png',
               name: 'images/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -105,9 +102,9 @@ const config = (env) => ({
           {
             loader: 'file-loader',
             options: {
-              name: 'fonts/[name].[ext]'
-            }
-          }
+              name: 'fonts/[name].[ext]',
+            },
+          },
         ],
       },
       {
@@ -119,8 +116,8 @@ const config = (env) => ({
               limit: 8192,
               mimetype: 'application/font-woff',
               name: 'fonts/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -132,8 +129,8 @@ const config = (env) => ({
               limit: 8192,
               mimetype: 'application/octet-stream',
               name: 'fonts/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
       {
@@ -145,11 +142,11 @@ const config = (env) => ({
               limit: 8192,
               mimetype: 'image/svg+xml',
               name: 'images/[name].[ext]',
-            }
-          }
+            },
+          },
         ],
       },
-    ]
+    ],
   },
 });
 
